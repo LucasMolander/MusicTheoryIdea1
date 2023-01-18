@@ -39,7 +39,11 @@ def chordBuilder8notes(noteName, qualName) -> Optional[List[float]]:
     if f1 is None:
         return None
 
-    return getMultsForQuality(qualName)
+    mults = getMultsForQuality(qualName)
+    if mults is None:
+        return None
+
+    return [f1 * m for m in mults]
 
 #combine and hold chord for T based on
 # calls: noteToFreq, chodBuilder8notes
